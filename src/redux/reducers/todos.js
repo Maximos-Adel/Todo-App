@@ -1,7 +1,13 @@
-import { ADD_TODO, COMPLETE_TODO, DELETE_TODO } from "../actionTypes";
+import {
+  ADD_TODO,
+  COMPLETE_TODO,
+  DELETE_TODO,
+  CLEAR_TODO,
+} from "../actionTypes";
 
 const todos = (state = [], action) => {
   let newTodos = [];
+
   switch (action.type) {
     case ADD_TODO:
       newTodos = [
@@ -23,6 +29,11 @@ const todos = (state = [], action) => {
       newTodos = [...state];
       newTodos = newTodos.filter((todos) => todos.id !== action.id);
       console.log("from delete reducer", newTodos);
+      return newTodos;
+
+    case CLEAR_TODO:
+      newTodos = [];
+      console.log("from clear reducer", newTodos);
       return newTodos;
 
     default:

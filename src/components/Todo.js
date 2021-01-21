@@ -1,16 +1,30 @@
 import React from "react";
 
 const Todo = ({ completed, text, complete, deleted }) => (
-  <div className="todo">
-    <li className={`todo-item ${completed ? "completed" : ""}`}>{text}</li>
-    <button className="complete-btn" onClick={complete}>
-      <i className="fas fa-check "></i>
-    </button>
-
-    <button className="trash-btn" onClick={deleted}>
-      <i className="fas fa-trash "></i>
-    </button>
-  </div>
+  <label
+    className="panel-block"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+    }}
+  >
+    <div className={`${completed ? "completed" : ""}`}>{text}</div>
+    <div>
+      <button
+        style={{
+          marginRight: "5px",
+        }}
+        className="button is-small is-light "
+        onClick={complete}
+      >
+        <i className="fas fa-check "></i>
+      </button>
+      <button className="button is-small is-light" onClick={deleted}>
+        <i className="fas fa-trash "></i>
+      </button>
+    </div>
+  </label>
 );
 
 export default Todo;

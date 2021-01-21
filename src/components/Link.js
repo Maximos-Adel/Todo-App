@@ -3,58 +3,42 @@ import { connect } from "react-redux";
 import { setVisibilityFilter } from "../redux/actionCreator";
 import { VisibilityFilters } from "../redux/reducers/visibilityFilter";
 
-const Link = ({ onClick }) => (
-  <div>
-    {/* <button
-      className="filter_btn"
+const Link = ({ onClick, active }) => (
+  <div className="panel-tabs">
+    <a
+      href="#"
+      className={` ${VisibilityFilters.SHOW_ALL === active ? "is-active" : ""}`}
       onClick={() => onClick(VisibilityFilters.SHOW_ALL)}
     >
       All
-    </button>
-    <button
-      className="filter_btn"
+    </a>
+    <a
+      href="#"
+      className={` ${
+        VisibilityFilters.SHOW_ACTIVE === active ? "is-active" : ""
+      }`}
       onClick={() => onClick(VisibilityFilters.SHOW_ACTIVE)}
     >
       Active
-    </button>
-    <button
-      className="filter_btn"
+    </a>
+    <a
+      href="#"
+      className={` ${
+        VisibilityFilters.SHOW_COMPLETED === active ? "is-active" : ""
+      }`}
       onClick={() => onClick(VisibilityFilters.SHOW_COMPLETED)}
     >
       Complete
-    </button> */}
-
-    <div class="select">
-      <select name="todos" class="filter-todo">
-        <option
-          value="all"
-          onChange={() => onClick(VisibilityFilters.SHOW_ALL)}
-        >
-          All
-        </option>
-        <option
-          value="completed"
-          onChange={() => onClick(VisibilityFilters.SHOW_COMPLETED)}
-        >
-          Completed
-        </option>
-        <option
-          value="uncompleted"
-          onChange={() => onClick(VisibilityFilters.SHOW_ACTIVE)}
-        >
-          Uncompleted
-        </option>
-      </select>
-    </div>
+    </a>
   </div>
 );
 
-// const mapStateToProps = (state, action) => ({
-//   active: action.filter === state.visibilityFilter,
-// });
+const mapStateToProps = (state) => ({
+  active: state.visibilityFilter,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onClick: (filter) => dispatch(setVisibilityFilter(filter)),
 });
 
-export default connect(null, mapDispatchToProps)(Link);
+export default connect(mapStateToProps, mapDispatchToProps)(Link);

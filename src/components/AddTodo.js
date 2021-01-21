@@ -6,33 +6,20 @@ function AddTodo({ add }) {
   const [text, setText] = useState("");
 
   return (
-    <div className="App">
-      <header>
-        <h1>Max Todo List</h1>
-      </header>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <input
-          onChange={(e) => setText(e.target.value)}
-          type="text"
-          value={text}
-          className="todo-input"
-          placeholder="Enter to add"
-        />
-        <button
-          onClick={() => {
+    <div className="panel-block">
+      <input
+        onChange={(e) => setText(e.target.value)}
+        type="text"
+        value={text}
+        className="input"
+        placeholder="Enter to add"
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
             add(text);
             setText("");
-          }}
-          className="todo-button"
-          type="submit"
-        >
-          <i className="fas fa-plus-square"></i>
-        </button>
-      </form>
+          }
+        }}
+      />
     </div>
   );
 }
