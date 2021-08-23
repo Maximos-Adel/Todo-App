@@ -13,7 +13,7 @@ function App() {
           <span role="img" aria-label="atom">
             ⚛️
           </span>{" "}
-          React ToDo
+          {/* React ToDo */}
         </div>
         <AddTodo />
         <Link />
