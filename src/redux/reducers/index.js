@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import todos from "./todos";
-import visibilityFilter from "./visibilityFilter";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+
+import todos from "./todos";
+import visibilityFilter from "./visibilityFilter";
 
 const persistConfig = {
   key: "root",
